@@ -1,0 +1,35 @@
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: url(/images/pointer.png), pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.gallery {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1128px;
+
+  outline: 2px solid tomato;
+}
+
+.gallery-image {
+  width: 360px;
+  height: 200px;
+}
