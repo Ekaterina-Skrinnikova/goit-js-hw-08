@@ -64,10 +64,8 @@ const images = [
   },
 ];
 
-const boxesGallery = document.querySelector(".gallery");
-boxesGallery.innerHTML = createGallery(images);
-
-let modal;
+const galleryContainer = document.querySelector(".gallery");
+galleryContainer.innerHTML = createGallery(images);
 
 function createGallery(images) {
   return images
@@ -87,7 +85,7 @@ function createGallery(images) {
     .join("");
 }
 
-boxesGallery.addEventListener("click", (event) => {
+galleryContainer.addEventListener("click", (event) => {
   event.preventDefault();
   if (event.target === event.currentTarget) {
     return;
@@ -95,21 +93,14 @@ boxesGallery.addEventListener("click", (event) => {
 
   const linkOfElement = event.target.getAttribute("data-source");
   console.log(linkOfElement);
+  const description = event.target.getAttribute("alt");
+  console.log(description);
 
-  modal = basicLightbox.create(
-    `
-    <div class="modal">
-       <img src="${linkOfElement}" alt="">
-    </div>
-`
-  );
-  modal.show();
-});
-
-document.addEventListener("keydown", ({ code }) => {
-  if (code === "Escape") {
-    modal.close();
-  }
-
-  return;
+  basicLightbox
+    .create(
+      `<div class="modal">
+       <img src="${linkOfElement}" alt="${description}">
+    </div>`
+    )
+    .show();
 });
